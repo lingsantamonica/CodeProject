@@ -1,0 +1,88 @@
+
+program fibo;
+
+
+#include("stdlib.hhf");
+
+static 
+     //Declare the three integers 
+	 //that we need to use for this program
+	 
+	 num: int32;   
+     f0: int32;
+	 f1: int32;
+     		
+begin fibo; 
+     
+      
+	  
+	  
+	  stdout.put("YUNPENG LING - PROJECT 6: FIBONACCI NUMBER ", nl, nl);
+	  
+	  Jumper: // work as jump in charpter 7
+	  
+	  //We set the value of num as a non-zero integer
+	  //So it will trigger the while loop
+	  
+	  mov(1,num);
+	  
+	  while(num!=0)do
+	  
+	  stdout.put("Enter a positive numbre up to 25, enter 0 to stop: ");
+	  stdin.get(num);
+	  
+	  
+	  
+	  
+	  
+	  //If the user input number is equal to 0 then 
+	  //exit the loop and end the program
+	  
+	  if(num==0)then
+	  break;
+	  endif;
+	  
+	  //The program only calculate up to 25 so we set a jmp here
+	  //The keyword Jumper send user back to the start of program
+	 if(num>25)then
+	  
+	   stdout.put(nl,"Please enter a number smaller than 26",nl);
+	  
+	  jmp Jumper;  
+	  
+	  endif;
+	  
+	  
+	  //Initialize FIBONACCI
+	  mov(0,f0);
+	  mov(1,f1);
+	  
+	  
+	  
+	   //In this for loop We save the smaller number 
+	  //and replace it's position with the lager number
+     // Update the lager number by adding two numbers
+	  
+	  for(mov(2,ebx); ebx<=num;INC(ebx))do
+            
+			mov(f0,ecx);
+			mov(f1,f0);
+			add(f1,ecx);
+			mov(ecx,f1);
+	  
+	  endfor;		
+			
+	  stdout.put("The Fibonacci of ",num, " is ",f1 );
+	  stdout.newln();
+	  
+	  endwhile;
+	  
+	  //All the loop ends here
+	  stdout.newln();
+	  stdout.put("YUNPENG LING - PROJECT 6: FIBONACCI NUMBER");
+	  stdout.newln();
+	  
+	  
+	  end fibo;
+	  
+	  

@@ -1,0 +1,69 @@
+Assignment 4A: Compare Strings
+
+In this assignment, you will create a script that uses comparison operators and functions to compare two strings to see if they are the same.
+
+1. Create a new PHP document named CompareStrings.php in your IDE.
+
+2. Type the <!DOCTYPE html> declaration, <html> element, document head, and <body> element.  Use the string ¡°Compare Strings¡± as the content of the <title> element.
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<title>Compare Strings</title>
+
+</head>
+
+<body>
+
+//ADD CODE HERE
+
+</body>
+
+</html>
+
+3. Add the following text and elements to the document body:
+
+<h1>Compare Strings</h1><hr />
+
+4. Add the following script section to the document body:
+
+<?php 
+
+ 
+
+?>
+
+5. In the PHP section, declare and initialize two string variables:
+
+$firstString = "Geek2Geek";
+
+$secondString = "Geezer2Geek"
+
+ 
+
+6. Write an if statement that test if both variables $firstString and $secondString are not empty(). If both variables are not empty write a nested second if statement that uses the comparison operator (==) or the function strcmp() to determine if both strings are the same. If the strings are the same call the sameVar() function. If the strings are not the same call the diffVar() function. 
+
+7. Create two PHP functions: samevar() and diffVar(). 
+
+The sameVar() function will accept two arguments: sameVar($var1,$var2) { }. The function will print a statement stating string $var1 does match $var2. 
+
+The diffVar() function will accept two arguments: diffVar($var1,$var2) { }. The function will print a statement stating string $var1 does not match $var2. 
+
+ 
+
+8. At the end of the script section, add the following else clause, which executes if either the $firstString or the $secondString contains an empty value.
+
+else { 
+
+echo "<p>Either the \$firstString variable or the \$secondString variable does not contain a value so the two strings cannot be compared. </p>";
+
+}
+
+9. Save the document as CompareStrings.php  and upload the file to the server to the module4a directory.
+
+10. Open CompareStrings.php in using your local XAMPP Web Server by entering the following URL: http://localhost/CompareStrings.php (Links to an external site.)Links to an external site.
+
+11. Close your Web browser window.

@@ -1,0 +1,90 @@
+
+
+//YUNPENG LING	
+//PROJECT 7 -----Bubble Sort Pure Assembly
+//CS 17
+//December 5 , 2018
+
+
+
+program pure;
+#include ("stdlib.hhf");
+
+
+const NumElements :=18;
+static
+
+     //Declare array elements
+   
+     DataToSort: uns32[NumElements] :=[18,99,13,14,17,25,82,76,42,65,66,32,41,16,37,81,38,90];
+	 swapped: boolean := true;
+	 
+
+begin pure;
+     stdout.put(nl,"YUNPENG LING --PROJECT 7 ", nl, nl);
+
+     stdout.put("Bubble sort, Number of Array Elements: ", DataToSort, nl);
+     stdout.put("Original Array Elements: ", nl);
+     	 
+	 
+	 //The original for loop been replaced with pure assembly
+	 mov(0,EBX);
+	
+forLp:
+	     cmp(EBX,18);
+	     jnl EndForLp;
+	     stdout.puti32Size(DataToSort[EBX*4],4 ,' ');
+	     inc(ebx);
+	     jmp forLp;
+	 
+EndForLp:
+         stdout.newln();stdout.newln();
+	 
+	 
+	 
+	 
+whileLp: 
+         cmp(swapped, true);
+	     jne WhileDone; 
+	     Mov(false,swapped);
+	 
+	 
+	     //for loop inside the while loop
+	 
+	     Mov(0,EBX);
+
+forLpp:
+	    cmp(EBX,17);
+	    jnl EndForLpp;
+	    mov(DataToSort[EBX*4], EAX);
+	   
+	 
+	 
+	 
+	 
+	    CMP(EAX, DataToSort[EBX*4+4]);
+	    jng EndOfIf;
+	    mov(DataToSort[EBX*4+4],ECX);
+	    mov(ECX, DataToSort[EBX*4]);
+	    mov(EAX, DataToSort[EBX*4+4]);
+	    mov(true, swapped);
+	    jmp EndOfIf;
+
+EndOfIf:
+           stdout.puti32Size(DataToSort[EBX*4],4,' ');
+	
+           //End of for loop
+		   INC(EBX);
+	       jmp forLpp;
+EndForLpp:
+	       
+	       stdout.puti32Size(DataToSort[NumElements*4-4], 4, ' ');
+	       stdout.newln();
+	 
+	       jmp whileLp;
+WhileDone:
+	 
+	 stdout.put(nl, "YUNPENG LING - End of project 7" nl, nl);
+	 
+	 
+end pure;	

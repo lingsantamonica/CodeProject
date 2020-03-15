@@ -1,0 +1,60 @@
+//YunPeng Ling
+//Project2 Resubmit
+//12-5-2018
+
+
+
+program dateDemo;
+ 
+#include( "stdlib.hhf" )
+
+
+static
+    day: uns8;
+    month: uns8;
+    year: uns16;
+    packedDate: dword;
+     
+begin dateDemo;
+    stdout.put( "Enter the current month, day, and year: " );
+    stdin.get( month, day, year );
+    // Pack data into the following bits:
+    // 15 14 13 12 11 10 9 8 7 6 5 4 3 2 1 0
+    //  m  m  m  m   d  d  d d d y y y  y y y y
+    mov( 0, ax );
+    mov( ax, packedDate ); // in case of an error.
+    if( month > 12 ) then
+    elseif( month = 0 ) then
+        stdout.put( "Month value must be from 1..12", nl );
+    elseif( day > 31 ) then
+        stdout.put( "Day value is too large", nl );
+    elseif( day = 0 ) then
+        stdout.put( "Day value must be from 1..31", nl );
+    elseif( year > 99 ) then
+        stdout.put( "Year value must be from 0..99", nl );
+    else
+    mov( month, al );
+    shl( 5, ax );
+    or( day, al );
+    shl( 7, ax );
+    or( year, al );
+    mov( ax, packedDate );
+    endif;
+     
+    // Display packed value
+    stdout.put( "Packed data = $", packedDate, nl );
+     
+    // Unpack date:
+    mov( packedDate, ax );
+    and( $7f, al ); // Retrieve year value.
+    mov( al, year );
+    mov( packedDate, ax ); // Retrieve day value.
+    shr( 7, ax );
+    and( %1_1111, al );
+    mov( al, day );
+    mov( packedDate, ax ); // Retrieve month value.
+    rol( 4, ax );
+    and( %1111, al );
+    mov( al, month );
+    stdout.put( "The date is ", month, "/", day, "/", year, nl );
+end dateDemo;

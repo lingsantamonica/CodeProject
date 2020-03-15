@@ -1,0 +1,67 @@
+In this assignment, you will create a script that validates whether a credit card number contains only integers. The script will remove dashes and spaces from the string. After the dashes and spaces are removed, the script should reject the credit card number if it contains any other non-numeric characters. 
+
+Useful built-in PHP functions: empty() (Links to an external site.)Links to an external site., str_replace() (Links to an external site.)Links to an external site., is_numeric() (Links to an external site.)Links to an external site.
+
+1. Create a new php file named ValidateCreditCard.php in your IDE.
+
+2. Type <!DOCTYPE html> declaration, <html> element, document head, and <body> element. The page <title> should be ¡°Validate Credit Card¡±.
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<title>Validate Credit Card</title>
+
+</head>
+
+<body>
+
+ 
+
+ 
+
+</body>
+
+</html>
+
+3. Add the following text and elements to the document body: <h1>Validate Credit Card</h1><hr />
+
+4. Add the following script section to the document body:
+
+<?php
+
+ //ADD CODE HERE
+
+?>
+
+5. Declare a $CreditCard array that contains three values: an empty string, a valid credit card number with numbers and dashes, and a credit card number with four initial uppercase letter Os.
+
+$CreditCard = array( "", "8910-1234-5678-6543", "OOOO-9123-4567-0123");
+
+6. Add the following statements to iterate through each of the elements in the $CreditCard array to determine if the element contains a value.
+
+foreach ($CreditCard as $CardNumber) {
+
+if (empty($CardNumber)) { 
+
+echo "<p>This Credit Card Number is invalid because it contains an empty string.</p>";
+
+}
+
+7. In the else clause validate the credit card number. The function str_replace() (Links to an external site.)Links to an external site. can be used to remove any dashes and spaces in the number. Then, use a nested if...else statement to checks whether the new value is numeric using the is_numeric() (Links to an external site.)Links to an external site. function of if the string is empty(). (Links to an external site.)Links to an external site. If the number is not numeric, a warning is displayed. If the number is numeric, the modified credit card number is displayed in the Web browser.
+
+else {
+
+ 
+
+//ADD CODE HERE
+
+}
+
+8. Save the script as ValidateCreditCard.php and upload the file to the server module4b directory. 
+
+9. Open ValidateCreditCard.php in your local XAMPP Web browser by entering the following URL:  ValidateCreditCard.php. Test the script to see if it displays a message for an empty string, strips dashes and spaces from the credit card numbers, and identifies which credit card numbers are valid.
+
+10. Close your Web browser window.

@@ -1,0 +1,90 @@
+//YUNPENG LING
+//CS17 PROJECT 5 - SELECTION SORT
+//NOVEMBER 11  2018
+
+
+program sort;
+#include("stdlib.hhf");
+
+   //Declare the size of array
+    const NUMARR :=17;
+
+
+static 
+        
+		//Setup an array that will be used later
+        ARRAYTOSORT: int32 [NUMARR] :=[18,23,39,56,67,89,49,44,85,82,37,99,73,67,45,81,55];
+	    LastIndex: int32 :=16;
+		
+		//Need to use two other integer to hold values for selection sort	
+		Index: int32;
+		temp:int32;
+		
+		
+begin sort;
+
+       stdout.put(nl, "YUNPENG - PROJECT 5 ", nl, nl);
+       stdout.put("Selection Sort, Number of Array Elements: ", NUMARR, nl);
+       stdout.put("Original Array Elements: ", nl);
+
+	   
+	   //This for loop is used to print out the member variables of array
+       
+	   for(MOV(0,EBX); EBX<LastIndex; INC(EBX))do 
+
+            stdout.puti32Size(ARRAYTOSORT[EBX*4], 4, ' ');
+
+         endfor;
+
+         stdout.newln();
+         stdout.newln();
+	  
+  
+      //Here is a while loop to execute the selection sort 
+
+      while(LastIndex>0)do
+  
+      //Index = 0 
+      
+	  MOV(0,Index);
+	
+	
+	  for(MOV(0,EAX);EAX<=LastIndex;INC(EAX))do
+	   
+	    MOV(Index,EBX);
+		MOV(ARRAYTOSORT[EBX*4],ECX);
+	   
+	   
+ 	  if(ECX<ARRAYTOSORT[EAX*4])then  //Use the if loop to compare two numbers
+		  
+		 MOV(EAX,Index);
+		 
+      endif;
+      endfor;		
+		  
+		 
+		 //The following MOV instructions do a swap for the array
+		 MOV(LastIndex,ECX);
+		 MOV(Index,EBX);
+		 MOV(ARRAYTOSORT[EBX*4],temp);
+		 MOV(ARRAYTOSORT[EBX * 4],ARRAYTOSORT[ECX * 4]);
+		 MOV(temp,ARRAYTOSORT[EBX*4]);
+		 
+		 //Decrease the LastIndex 
+		 DEC(LastIndex);
+		 
+     //Using a for loop to display the array after sorting
+    
+	 for(MOV(0,EBX);EBX<17;INC(EBX))do
+	
+        stdout.put(ARRAYTOSORT[EBX*4]: 4);
+         
+     endfor;
+
+     endwhile;
+	 
+	  stdout.put(nl, "YUNPENG LING - END OF PROJECT 5", nl, nl);
+
+end sort;	
+		  	  
+	

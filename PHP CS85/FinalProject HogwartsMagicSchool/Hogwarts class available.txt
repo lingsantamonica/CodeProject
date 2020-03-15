@@ -1,0 +1,50 @@
+Hogwart class schedule for First Year Students
+
+
+//Charms
+
+Professor:Filius Flitwick
+
+Info: 
+Mastering the science of charmwork is 
+clearly essential to performing the greater part of magic
+
+
+
+ // Defence Against the Dark Arts
+info: In this class students learn how to magically defend 
+themselves against Dark Creatures, the Dark Arts, and other dark charms
+
+Professor: 
+
+
+//Flying
+Professor: Ginny Potter
+The subject teaches students how to fly broomsticks.
+and use enchanted rings to guide flight.
+
+
+//Transfiguration:
+Minerva McGonagall:
+
+teaches the art of changing the form and appearance of an object or a person. 
+This type of magic is commonly referred to as "Transfiguration"
+ and is considered both complex and dangerous.
+
+
+
+//Potion
+Horace Slughorn
+
+In this class, students learn the correct way to brew potions.
+ They follow specific recipes and use various magical ingredients to create the potions, 
+starting with simple ones and moving to more advanced ones as they progress in knowledge.
+
+
+//Herbology:
+neville longbottom
+
+Herbology is the study of magical and mundane plants and fungi 
+students learn to care for and utilise plants 
+learn about their magical properties and what they are used for.
+

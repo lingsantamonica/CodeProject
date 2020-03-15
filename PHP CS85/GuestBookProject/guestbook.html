@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<!-- Filename: guestbook.html -->
+
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <tittle>Guest Book</tittle>
+
+
+</head>
+<body>
+
+<h2>Enter your name to sign our guest book</h2>
+//Create a form to let the guest sign in their first and last name.
+<form method="POST" action="signguestbook.php">
+
+     <p>First Name <input type="text" name="first_name"/></p>
+	 <p>Last Name <input type="text" name="last_name"/></p>
+	 <p><input type="submit" value="Submit"/></p>
+	 
+</form>	 
+
+//when user clicked submit, call the showguestbook.php file.
+<p><a href="showguestbook.php">Show Guest Book</a></p>
+
+
+
+
+
+
+</body>
+</html>
