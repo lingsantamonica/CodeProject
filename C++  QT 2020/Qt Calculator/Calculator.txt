@@ -1,0 +1,144 @@
+#include "Calculator.h"
+#include "ui_Calculator.h"
+
+double calcVal=0.0;
+bool divTrigger=false;
+bool mulTrigger=false;
+bool addTrigger=false;
+bool subTrigger=false;
+
+MainWindow::MainWindow(QWidget *parent)
+    : QMainWindow(parent)
+    , ui(new Ui::MainWindow)
+{
+    ui->setupUi(this);
+
+    //convert double to qstring
+    ui->Display->setText(QString::number(calcVal));
+
+    QPushButton *numButtons[10];
+
+    for(int i=0; i<10; i++)
+     {
+        QString buttonName="Button"+QString::number(i);
+        numButtons[i]=MainWindow::findChild<QPushButton *>(buttonName);
+        connect(numButtons[i], SIGNAL(released()), this, SLOT(NumPressed()));
+
+      }
+     connect(ui->Add, SIGNAL(released()), this, SLOT(MathButtonPressed()));
+
+     connect(ui->Sub, SIGNAL(released()), this, SLOT(MathButtonPressed()));
+
+     connect(ui->Multi, SIGNAL(released()), this, SLOT(MathButtonPressed()));
+
+     connect(ui->Division, SIGNAL(released()), this, SLOT(MathButtonPressed()));
+
+     connect(ui->Equal, SIGNAL(released()), this, SLOT(EqualButton()));
+
+      connect(ui->ChangeSign, SIGNAL(released()), this, SLOT(ChangeNumberSign()));
+
+}
+
+MainWindow::~MainWindow()
+{
+    delete ui;
+}
+
+void MainWindow::NumPressed(){
+
+    QPushButton *button=(QPushButton*)sender();
+    QString buttonVal=button->text();
+    QString displayVal=ui->Display->text();
+
+    if((displayVal.toDouble()==0)||(displayVal.toDouble()==0.0))
+    {
+        ui->Display->setText(buttonVal);
+
+
+    }else
+    {
+        QString newVal=displayVal+buttonVal;
+        double dblNewVal=newVal.toDouble();
+        ui->Display->setText(QString::number(dblNewVal,'g',16));
+
+    }
+}
+
+
+//Track which math button is pressed on
+void MainWindow::MathButtonPressed(){
+
+     divTrigger=false;
+     mulTrigger=false;
+     addTrigger=false;
+     subTrigger=false;
+
+     //Store current value into display
+     QString displayVal = ui->Display->text();
+     calcVal=displayVal.toDouble();
+     QPushButton *button = (QPushButton*)sender();
+     QString buttonVal=button->text();
+     if(QString::compare(buttonVal, "/",Qt::CaseInsensitive)==0){
+         divTrigger=true;
+     }
+
+     else if(QString::compare(buttonVal, "*",Qt::CaseInsensitive)==0){
+         mulTrigger=true;
+     }
+
+     else if(QString::compare(buttonVal, "+", Qt::CaseInsensitive)==0){
+         addTrigger=true;
+     }
+
+     else{
+         subTrigger=true;
+     }
+
+     ui->Display->setText("");
+}
+
+void MainWindow::EqualButton(){
+    double solution=0.0;
+    QString displayVal=ui->Display->text();
+
+    double doubleDisplayVal=displayVal.toDouble();
+
+    if(addTrigger||subTrigger||mulTrigger||divTrigger)
+    {
+        if(addTrigger)
+        {
+            solution=calcVal+doubleDisplayVal;
+        }
+        else if(subTrigger)
+        {
+            solution=calcVal-doubleDisplayVal;
+        }
+        else if(mulTrigger)
+        {
+            solution=calcVal*doubleDisplayVal;
+        }
+        else
+        {
+            solution=calcVal/doubleDisplayVal;
+        }
+
+
+    }
+
+    ui->Display->setText(QString::number(solution));
+
+}
+
+void MainWindow::ChangeNumberSign(){
+    QString displayVal=ui->Display->text();
+
+    //regular expression check
+    QRegExp reg("[-]?[0-9.]*");
+
+    if(reg.exactMatch(displayVal))
+    {
+        double doubleDisplayVal=displayVal.toDouble();
+        double doubleDisplayValSign=-1*doubleDisplayVal;
+        ui->Display->setText(QString::number(doubleDisplayValSign));
+    }
+}
